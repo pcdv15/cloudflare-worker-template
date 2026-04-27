@@ -3,3 +3,9 @@ name = "cloudflare-worker-template"
 main = "src/worker.ts"
 compatibility_date = "2026-04-25"
 compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "test_db"
+database_id = "xxxxxxxx-xxxxxxxxxx-xxxxxxx"
+migrations_dir = "drizzle"
