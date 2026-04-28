@@ -1,9 +1,21 @@
-import { Hono } from "hono";
+import { todosRoutes } from "@/features/todos/todos.routes";
+import { createSwaggerDocument } from "@/swagger/document";
+import { OpenAPIHono } from "@hono/zod-openapi";
+import { swaggerUI } from "@hono/swagger-ui";
+import { logger } from "hono/logger";
 
-const app = new Hono<{ Bindings: Cloudflare.Env }>();
+const app = new OpenAPIHono<{ Bindings: Cloudflare.Env }>();
+
+app.use("/api/*", logger());
+
+app.doc("/doc", createSwaggerDocument());
+
+app.get("/api/docs", swaggerUI({ url: "/doc" }));
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
+
+app.route("/api/todos", todosRoutes);
 
 export default app;
