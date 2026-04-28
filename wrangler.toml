@@ -1,5 +1,5 @@
 "$schema" = "https://unpkg.com/wrangler@latest/config-schema.json"
 name = "cloudflare-worker-template"
-main = "src/index.ts"
+main = "src/worker.ts"
 compatibility_date = "2026-04-25"
 compatibility_flags = ["nodejs_compat"]
